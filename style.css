@@ -1,0 +1,208 @@
+:root {
+    --yellow: #ffcc00;
+    --black: #000000;
+    --white: #ffffff;
+    --bg: #fff8dc;
+}
+
+body {
+    font-family: "Comic Sans MS", "Chalkboard SE", cursive, sans-serif;
+    background-color: var(--bg);
+    margin: 0;
+    padding-bottom: 60px;
+}
+
+header {
+    background: var(--black);
+    color: var(--yellow);
+    text-align: center;
+    padding: 25px;
+    border-bottom: 5px solid var(--black);
+    transform: rotate(-0.5deg);
+    margin: 15px;
+    box-shadow: 8px 8px 0 var(--black);
+}
+
+.tabs-container {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    padding: 15px;
+    flex-wrap: wrap;
+}
+
+.tab-btn {
+    background: var(--white);
+    border: 3px solid var(--black);
+    padding: 12px 18px;
+    font-weight: 900;
+    cursor: pointer;
+    box-shadow: 4px 4px 0px var(--black);
+    transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.tab-btn:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: 6px 6px 0px var(--black);
+    background-color: var(--yellow);
+}
+
+.tab-btn.active {
+    background: var(--black);
+    color: var(--yellow);
+    transform: translate(4px, 4px);
+    box-shadow: 0px 0px 0px var(--black);
+}
+
+.tab-content {
+    display: none;
+    padding: 30px;
+    margin: 20px auto;
+    background: var(--white);
+    border: 4px solid var(--black);
+    max-width: 850px;
+    box-shadow: 12px 12px 0px var(--black);
+}
+
+.tab-content.active {
+    display: block;
+    animation: cartoonBounce 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+@keyframes cartoonBounce {
+    0% { transform: scale(0.8) rotate(-2deg); opacity: 0; }
+    100% { transform: scale(1) rotate(0deg); opacity: 1; }
+}
+
+.welcome-card { text-align: center; }
+
+.calculator {
+    background: #eef2ff;
+    padding: 20px;
+    border: 3px dashed var(--black);
+    margin: 20px 0;
+}
+
+input, select {
+    border: 3px solid var(--black);
+    padding: 10px;
+    font-weight: bold;
+    width: 100%;
+    box-sizing: border-box;
+    box-shadow: 3px 3px 0px var(--black);
+    margin-bottom: 10px;
+}
+
+.calc-btn, .example-btn {
+    background: var(--yellow);
+    border: 3px solid var(--black);
+    padding: 10px 20px;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 4px 4px 0px var(--black);
+    margin: 5px;
+    text-transform: uppercase;
+}
+
+.calc-btn:active { transform: translate(2px, 2px); box-shadow: 0px 0px 0px; }
+
+.highlight {
+    background: #00ff88;
+    padding: 15px;
+    border: 3px solid #000;
+    margin-top: 15px;
+    font-weight: bold;
+}
+
+.steps-box {
+    background: #eee;
+    padding: 10px;
+    border-left: 5px solid var(--black);
+    font-family: monospace;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    border: 4px solid var(--black);
+}
+
+th, td { border: 3px solid var(--black); padding: 15px; text-align: left; }
+th { background: var(--yellow); }
+
+.image-container img {
+    display: block;       /* This allows the image to follow margin rules */
+    margin: 20px auto;    /* 20px top/bottom, 'auto' centers it left/right */
+    border: 4px solid var(--black);
+    box-shadow: 8px 8px 0px var(--yellow);
+    max-width: 90%;
+}
+
+/* --- FOOTER VISIBILITY --- */
+footer {
+    text-align: center;
+    background: var(--black);
+    color: white;
+    padding: 15px;
+    position: fixed;
+    bottom: -100px;
+    left: 0;
+    width: 100%;
+    border-top: 4px solid var(--yellow);
+    font-weight: bold;
+    z-index: 1000;
+    transition: bottom 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.visible-footer { bottom: 0 !important; }
+.hidden-footer { bottom: -100px !important; }
+
+.comic-list li { margin-bottom: 10px; }
+
+.steps-box {
+    background-color: #f0f4f8;
+    border-left: 10px solid #000;
+    padding: 15px;
+    margin-top: 15px;
+    font-size: 0.95em;
+    animation: slideIn 0.3s ease-out;
+}
+
+.steps-box h3 {
+    margin-top: 0;
+    color: #d32f2f; /* A nice "teacher" red */
+    font-size: 1.1em;
+}
+
+.highlight {
+    background: #00ff88;
+    padding: 15px;
+    border: 3px solid #000;
+    margin-top: 15px;
+    font-weight: bold;
+    display: inline-block;
+    box-shadow: 4px 4px 0px #000;
+}
+
+@keyframes slideIn {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+.steps-box {
+    background-color: #f9f9f9;
+    border-left: 8px solid #ffcc00; /* Yellow bar to match your theme */
+    padding: 15px;
+    margin-top: 15px;
+    line-height: 1.6;
+    box-shadow: 4px 4px 0px #000;
+    border: 2px solid #000;
+}
+
+.steps-box h3 {
+    margin-top: 0;
+    font-size: 1.1em;
+    text-transform: uppercase;
+}

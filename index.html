@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Population & Sampling for Dummies</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+    <h1>📊 Population and Sampling for the Dummies 🤓</h1>
+</header>
+
+<nav class="tabs-container">
+    <button class="tab-btn active" onclick="openTab('home')">
+        <span class="icon">🏠</span>Home
+    </button>
+    <button class="tab-btn" onclick="openTab('population')">
+        <span class="icon">📚</span>Population
+    </button>
+    <button class="tab-btn" onclick="openTab('sampling')">
+        <span class="icon">📝</span>Sampling
+    </button>
+    <button class="tab-btn" onclick="openTab('slovin')">
+        <span class="icon">🧮</span>Slovin
+    </button>
+    <button class="tab-btn" onclick="openTab('raosoft')">
+        <span class="icon">🧮</span>Raosoft
+    </button>
+    <button class="tab-btn" onclick="openTab('comparison')">
+        <span class="icon">📊</span>Comparison
+    </button>
+    <button class="tab-btn" onclick="openTab('dummies')">
+        <span class="icon">🛠</span>For the Dummies
+    </button>
+</nav>
+
+<main>
+    <div id="home" class="tab-content active">
+        <div class="welcome-card">
+            <h2>Welcome Researchers! </h2>
+            <p>Ever felt like <strong>Statistics</strong> was a language invented just to make you feel like a "dummy"? You aren't alone.</p>
+            <div class="calculator" style="background-color: #fff176;">
+                <p><strong>The Mission:</strong> We’ve broken down the scary stuff—Populations, Sampling techniques, and those math formulas with weird names—into bits so simple even your goldfish could pass the exam.</p>
+            </div>
+            <p>Click the tabs above to stop guessing and start calculating like a pro. Warning: Side effects may include actually understanding your research paper. 🚀</p>
+            <button class="calc-btn" onclick="openTab('dummies')">
+                See the "For the Dummies" Summary →
+            </button>
+        </div>
+    </div>
+
+    <div id="population" class="tab-content">
+        <h2>Population</h2>
+        <p><strong>Meaning:</strong> The <em>population</em> is the entire group you want to study.</p>
+        <p><strong>Example:</strong> All 500 students in a school are the population.</p>
+        <div class="image-container">
+            <img src="https://www.questionpro.com/blog/wp-content/uploads/2023/02/population_vs_sample_%E2%80%93_all_you_need_to_know.jpg" alt="Population vs Sample">
+        </div>
+    </div>
+
+    <div id="sampling" class="tab-content">
+        <h2>Sampling Techniques</h2>
+        <p>Sampling is the process of selecting a smaller group (the sample) from a much larger group (the population) to represent the whole.</p>
+        
+        <div class="calculator">
+            <h3>1. Probability Sampling</h3>
+            <p><em>Best for: Reducing bias and making general claims about a population.</em></p>
+            <ul class="comic-list">
+                <li><strong>Simple Random Sampling:</strong> Every individual has an equal chance of being picked (e.g., picking names from a hat).</li>
+                <li><strong>Systematic Sampling:</strong> Selecting every $n^{th}$ individual from a list (e.g., every 10th person).</li>
+                <li><strong>Stratified Sampling:</strong> Dividing the population into groups (strata) and picking a random sample from each group to ensure balance.</li>
+                <li><strong>Cluster Sampling:</strong> Dividing the population into groups (clusters), randomly picking a few clusters, and studying everyone inside them.</li>
+            </ul>
+        </div>
+
+        <div class="calculator" style="background-color: #e0f7fa;">
+            <h3>2. Non-Probability Sampling</h3>
+            <p><em>Best for: Exploratory research, pilot studies, or when time/budget is limited.</em></p>
+            <ul class="comic-list">
+                <li><strong>Convenience Sampling:</strong> Using participants who are easiest to reach or find.</li>
+                <li><strong>Purposive (Judgmental) Sampling:</strong> Selecting specific people because they have the exact knowledge or traits you need.</li>
+                <li><strong>Snowball Sampling:</strong> Asking current participants to refer people they know to the study (common for hard-to-reach groups).</li>
+                <li><strong>Quota Sampling:</strong> Setting a target number for different types of people (e.g., 50 men, 50 women) but picking them non-randomly.</li>
+                <li><strong>Voluntary Response Sampling:</strong> Letting people choose to join the study themselves (e.g., an online survey link).</li>
+            </ul>
+        </div>
+    </div>
+
+    <div id="slovin" class="tab-content">
+        <h2>Slovin Calculator 🧮</h2>
+        <div class="calculator">
+            <div class="input-group">
+                <label>Population (N):</label>
+                <input type="number" id="popN" placeholder="e.g. 500">
+            </div>
+            <div class="input-group">
+                <label>Margin of Error (e):</label>
+                <input type="number" id="popE" step="0.01" placeholder="e.g. 0.05">
+            </div>
+            <div class="btn-group">
+                <button class="calc-btn" onclick="calculateSlovin()">Calculate</button>
+                <button class="example-btn" onclick="fillSlovinExample()">💡 Fill Example</button>
+            </div>
+            <p id="slovinResult" class="highlight"></p>
+            <p id="slovinSteps" class="steps-box"></p>
+        </div>
+    </div>
+
+    <div id="raosoft" class="tab-content">
+        <h2>Raosoft Calculator 🧮</h2>
+        <div class="calculator">
+            <div class="input-group">
+                <label>Population (N):</label>
+                <input type="number" id="rPop" placeholder="e.g. 4000">
+            </div>
+            <div class="input-group">
+                <label>Confidence Level:</label>
+                <select id="rConf">
+                    <option value="1.96">95%</option>
+                    <option value="2.58">99%</option>
+                </select>
+            </div>
+            <div class="input-group">
+                <label>Margin of Error (e):</label>
+                <input type="number" id="rError" step="0.01" placeholder="e.g. 0.05">
+            </div>
+            <div class="btn-group">
+                <button class="calc-btn" onclick="calculateRaosoft()">Calculate</button>
+                <button class="example-btn" onclick="fillRaosoftExample()">💡 Fill Example</button>
+            </div>
+            <p id="raosoftResult" class="highlight"></p>
+        </div>
+    </div>
+
+    <div id="comparison" class="tab-content">
+
+        <h2>Comparison Table</h2>
+
+        <table>
+
+            <thead>
+
+                <tr><th>Feature</th><th>Slovin's Formula</th><th>Raosoft Calculator</th></tr>
+
+            </thead>
+
+            <tbody>
+
+                <tr><td><strong>Input Required</strong></td><td>N and e only</td><td>N, e, Confidence Level, Response Dist.</td></tr>
+
+                <tr><td><strong>Confidence Level</strong></td><td>Fixed / Not specified</td><td>Customizable (e.g., 95%, 99%)</td></tr>
+
+                <tr><td><strong>Complexity</strong></td><td>Simple arithmetic</td><td>Complex statistical algorithm</td></tr>
+
+                <tr><td><strong>Use Case</strong></td><td>Small-scale local studies</td><td>Large-scale formal research</td></tr>
+
+                <tr><td><strong>Accuracy</strong></td><td>General estimate</td><td>Statistically precise</td></tr>
+
+                <tr><td><strong>Availability</strong></td><td>Manual calculation</td><td>Usually requires online tool</td></tr>
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+
+
+    <div id="dummies" class="tab-content">
+
+        <h2>Conclusion & Summary 🛠</h2>
+
+        <div class="calculator">
+
+            <h3>Key Takeaways</h3>
+
+            <ul class="comic-list">
+
+                <li><strong>Population vs Sample:</strong> The population is the whole group; the sample is the portion you actually measure to make inferences.</li>
+
+                <li><strong>Probability Sampling:</strong> Use this when you want to minimize bias and generalize findings to the whole population.</li>
+
+                <li><strong>Non-Probability Sampling:</strong> Use this for quick research where statistical generalization is not the main goal.</li>
+
+                <li><strong>Slovin’s Usage:</strong> Best for simple, student-level research where only population size is known.</li>
+
+                <li><strong>Raosoft Usage:</strong> Essential for academic surveys where confidence levels must be reported.</li>
+
+            </ul>
+
+            <h3>Final Rule of Thumb</h3>
+
+            <p>If you need a quick number for a small project, use <strong>Slovin</strong>. If you are conducting a formal survey that needs to be defended in a thesis, use <strong>Raosoft</strong>.</p>
+
+        </div>
+
+    </div>
+</main>
+
+<footer id="footer" class="hidden-footer">
+    <p>PRESENTED BY GROUP 1 ❤️</p>
+</footer>
+
+<script>
+function openTab(tabId) {
+    const tabs = document.querySelectorAll('.tab-content');
+    const buttons = document.querySelectorAll('.tab-btn');
+    const footer = document.getElementById("footer");
+
+    tabs.forEach(tab => tab.classList.remove('active'));
+    buttons.forEach(btn => btn.classList.remove('active'));
+
+    document.getElementById(tabId).classList.add('active');
+    
+    const activeBtn = Array.from(buttons).find(btn => btn.getAttribute('onclick').includes(tabId));
+    if(activeBtn) activeBtn.classList.add('active');
+
+    // Footer logic: Only show on 'dummies' page
+    if (tabId === 'dummies') {
+        footer.classList.add("visible-footer");
+        footer.classList.remove("hidden-footer");
+    } else {
+        footer.classList.add("hidden-footer");
+        footer.classList.remove("visible-footer");
+    }
+
+    window.scrollTo(0, 0);
+}
+
+function calculateSlovin() {
+    const N = parseFloat(document.getElementById("popN").value);
+    const e = parseFloat(document.getElementById("popE").value);
+    if (!N || !e) { alert("Please enter population and margin of error!"); return; }
+    const n = Math.round(N / (1 + N * e * e));
+    document.getElementById("slovinResult").innerText = `✅ Sample Size: ${n}`;
+    document.getElementById("slovinSteps").innerText = `Step: ${N} / (1 + ${N} * ${e}²) = ${n}`;
+}
+
+function fillSlovinExample() { 
+    document.getElementById("popN").value=500; 
+    document.getElementById("popE").value=0.05; 
+    calculateSlovin(); 
+}
+
+function calculateRaosoft() {
+    const N = parseFloat(document.getElementById("rPop").value);
+    const e = parseFloat(document.getElementById("rError").value);
+    const Z = parseFloat(document.getElementById("rConf").value);
+    if (!N || !e) { alert("Missing input for Raosoft!"); return; }
+    const n0 = (Z*Z*0.25)/(e*e);
+    const n = Math.round(n0 / (1 + (n0-1)/N));
+    document.getElementById("raosoftResult").innerText = `✅ Sample Size: ${n}`;
+}
+
+function fillRaosoftExample() {
+    document.getElementById("rPop").value = 4000;
+    document.getElementById("rConf").value = "1.96";
+    document.getElementById("rError").value = 0.05;
+    calculateRaosoft();
+}
+
+window.onload = () => openTab('home');
+</script>
+
+</body>
+</html>
