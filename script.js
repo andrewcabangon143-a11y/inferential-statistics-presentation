@@ -78,27 +78,24 @@ function openTab(tabId) {
     }
 }let currentSlide = 0; // Starts at the first person (Jam)
 
+let currentSlide = 0;
+
 function changeSlide(direction) {
-    // 1. Get all the member slides
     const slides = document.querySelectorAll('.member-slide');
-    
-    // 2. Hide the person currently on screen
+    if (slides.length === 0) return; // Exit if no slides found
+
+    // Hide current
     slides[currentSlide].classList.remove('active');
     
-    // 3. Math magic: Change the counter and loop it (so after Felix, it goes back to Jam)
+    // Update index and loop
     currentSlide = (currentSlide + direction + slides.length) % slides.length;
     
-    // 4. Show the new person
+    // Show next
     slides[currentSlide].classList.add('active');
     
-    // 5. Update the "1 / 6" text at the top
-    document.getElementById('slide-number').innerText = `${currentSlide + 1} / ${slides.length}`;
-}document.addEventListener('keydown', (e) => {
-    // Only move slides if we are actually on the 'About Us' tab
-    const aboutTab = document.getElementById('about');
-    if (aboutTab && aboutTab.classList.contains('active')) {
-        if (e.key === "ArrowLeft") changeSlide(-1);
-        if (e.key === "ArrowRight") changeSlide(1);
-    }
+    // Update number
+    const label = document.getElementById('slide-number');
+    if (label) label.innerText = `${currentSlide + 1} / ${slides.length}`;
+}
 });
 
