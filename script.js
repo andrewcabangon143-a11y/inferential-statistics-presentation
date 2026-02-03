@@ -46,7 +46,7 @@ function calculateRaosoft() {
     document.getElementById("raosoftResult").innerHTML =
         `<strong>✅ Estimated Sample Size: ${n}</strong><br>
         This imitates Raosoft by considering confidence level and margin of error.`;
-
+ }
 }
 function openTab(tabId) {
     // 1. Find all pages and all buttons
@@ -101,3 +101,4 @@ function changeSlide(direction) {
         if (e.key === "ArrowRight") changeSlide(1);
     }
 });
+
