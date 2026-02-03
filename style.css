@@ -255,3 +255,35 @@ footer {
 .felix-card { border-color: #000000 !important; box-shadow: 10px 10px 0px #eeeeee !important; }
 
 @keyframes slideIn { from { opacity: 0; transform: translateX(30px); } to { opacity: 1; transform: translateX(0); } }
+
+
+.team-scroll-list {
+    display: flex;
+    flex-direction: column;
+    gap: 30px; /* Space between cards */
+    padding: 20px 0;
+    align-items: center;
+}
+
+.member-card {
+    width: 100%;
+    max-width: 500px;
+    background: white;
+    border: 4px solid black;
+    padding: 25px;
+    text-align: center;
+    box-shadow: 10px 10px 0px black;
+    transition: transform 0.2s;
+}
+
+.member-card:hover {
+    transform: scale(1.02); /* Pop out slightly when mouse is over it */
+}
+
+/* Individual Colors */
+.jam-card { border-color: #6a1b9a !important; box-shadow: 10px 10px 0px #e1bee7 !important; }
+.gecka-card { border-color: #fbc02d !important; box-shadow: 10px 10px 0px #fff9c4 !important; }
+.smile-card { border-color: #1976d2 !important; box-shadow: 10px 10px 0px #bbdefb !important; }
+.drew-card { border-color: #455a64 !important; box-shadow: 10px 10px 0px #cfd8dc !important; }
+.jade-card { border-color: #388e3c !important; box-shadow: 10px 10px 0px #c8e6c9 !important; }
+.felix-card { border-color: #000000 !important; box-shadow: 10px 10px 0px #eeeeee !important; }
