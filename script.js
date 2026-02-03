@@ -76,26 +76,41 @@ function openTab(tabId) {
             footer.classList.remove("visible-footer");
         }
     }
-}let currentSlide = 0; // Starts at the first person (Jam)
+function openTab(tabId) {
+    const tabs = document.querySelectorAll('.tab-content');
+    const buttons = document.querySelectorAll('.tab-btn');
+    const footer = document.getElementById("footer");
+
+    tabs.forEach(tab => tab.classList.remove('active'));
+    buttons.forEach(btn => btn.classList.remove('active'));
+
+    document.getElementById(tabId).classList.add('active');
+    
+    // Logic to add active class to button
+    const activeBtn = Array.from(buttons).find(btn => btn.getAttribute('onclick').includes(tabId));
+    if(activeBtn) activeBtn.classList.add('active');
+
+    // Show footer on About page
+    if (tabId === 'about' || tabId === 'dummies') {
+        footer.classList.add("visible-footer");
+    } else {
+        footer.classList.remove("visible-footer");
+    }
+}
 
 let currentSlide = 0;
-
 function changeSlide(direction) {
     const slides = document.querySelectorAll('.member-slide');
-    if (slides.length === 0) return; // Exit if no slides found
-
-    // Hide current
     slides[currentSlide].classList.remove('active');
-    
-    // Update index and loop
     currentSlide = (currentSlide + direction + slides.length) % slides.length;
-    
-    // Show next
     slides[currentSlide].classList.add('active');
-    
-    // Update number
-    const label = document.getElementById('slide-number');
-    if (label) label.innerText = `${currentSlide + 1} / ${slides.length}`;
+    document.getElementById('slide-number').innerText = `${currentSlide + 1} / ${slides.length}`;
 }
-});
 
+// Arrow Key Navigation
+document.addEventListener('keydown', (e) => {
+    if (document.getElementById('about').classList.contains('active')) {
+        if (e.key === "ArrowLeft") changeSlide(-1);
+        if (e.key === "ArrowRight") changeSlide(1);
+    }
+});
