@@ -46,4 +46,58 @@ function calculateRaosoft() {
     document.getElementById("raosoftResult").innerHTML =
         `<strong>✅ Estimated Sample Size: ${n}</strong><br>
         This imitates Raosoft by considering confidence level and margin of error.`;
+
 }
+function openTab(tabId) {
+    // 1. Find all pages and all buttons
+    const tabs = document.querySelectorAll('.tab-content');
+    const buttons = document.querySelectorAll('.tab-btn');
+    const footer = document.getElementById("footer");
+
+    // 2. Hide every single page first
+    tabs.forEach(tab => tab.classList.remove('active'));
+    
+    // 3. Make all buttons look "normal" (not black/active)
+    buttons.forEach(btn => btn.classList.remove('active'));
+
+    // 4. Show ONLY the page we clicked
+    document.getElementById(tabId).classList.add('active');
+    
+    // 5. Highlight the button we just clicked
+    if (event && event.currentTarget) {
+        event.currentTarget.classList.add('active');
+    }
+
+    // 6. Show the footer ONLY on the About or Dummies pages
+    if (footer) {
+        if (tabId === 'about' || tabId === 'dummies') {
+            footer.classList.add("visible-footer");
+        } else {
+            footer.classList.remove("visible-footer");
+        }
+    }
+}let currentSlide = 0; // Starts at the first person (Jam)
+
+function changeSlide(direction) {
+    // 1. Get all the member slides
+    const slides = document.querySelectorAll('.member-slide');
+    
+    // 2. Hide the person currently on screen
+    slides[currentSlide].classList.remove('active');
+    
+    // 3. Math magic: Change the counter and loop it (so after Felix, it goes back to Jam)
+    currentSlide = (currentSlide + direction + slides.length) % slides.length;
+    
+    // 4. Show the new person
+    slides[currentSlide].classList.add('active');
+    
+    // 5. Update the "1 / 6" text at the top
+    document.getElementById('slide-number').innerText = `${currentSlide + 1} / ${slides.length}`;
+}document.addEventListener('keydown', (e) => {
+    // Only move slides if we are actually on the 'About Us' tab
+    const aboutTab = document.getElementById('about');
+    if (aboutTab && aboutTab.classList.contains('active')) {
+        if (e.key === "ArrowLeft") changeSlide(-1);
+        if (e.key === "ArrowRight") changeSlide(1);
+    }
+});
