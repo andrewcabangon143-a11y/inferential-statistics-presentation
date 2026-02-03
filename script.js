@@ -17,13 +17,16 @@ function calculateSlovin() {
 
     if (!N || !e) { alert("Please enter all values."); return; }
 
+    // --- STEP 2: ADD THIS LINE HERE ---
+    document.getElementById("slovinFormulaBox").style.display = "block";
+
     let n = N / (1 + (N * e * e));
     n = Math.round(n);
 
-    document.getElementById("slovinResult").innerHTML =
+    document.getElementById("slovinResult").innerHTML = 
         `<strong>✅ Sample Size (n): ${n}</strong>`;
 
-    document.getElementById("slovinSteps").innerHTML =
+    document.getElementById("slovinSteps").innerHTML = 
         `<strong>Step-by-step:</strong><br>
         1️⃣ Square the margin of error: e² = ${(e*e).toFixed(4)}<br>
         2️⃣ Multiply by population: N × e² = ${(N*e*e).toFixed(2)}<br>
@@ -114,3 +117,4 @@ document.addEventListener('keydown', (e) => {
         if (e.key === "ArrowRight") changeSlide(1);
     }
 });
+
