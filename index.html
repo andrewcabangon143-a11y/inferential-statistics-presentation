@@ -323,24 +323,12 @@ function calculateSlovin() {
     document.getElementById("slovinSteps").innerText = `Step: ${N} / (1 + ${N} * ${e}²) = ${n}`;
 }
 
-function calculateSlovin() {
-    const N = parseFloat(document.getElementById("popN").value);
-    const e = parseFloat(document.getElementById("popE").value);
-    
-    if (!N || !e) { 
-        alert("Please enter population and margin of error!"); 
-        return; 
-    }
 
-    // THIS IS THE NEW LINE FOR STEP 2:
-    document.getElementById("slovinFormulaBox").style.display = "block";
-
-    const n = Math.round(N / (1 + N * e * e));
-    document.getElementById("slovinResult").innerText = `✅ Sample Size: ${n}`;
-    document.getElementById("slovinSteps").innerText = `Step: ${N} / (1 + ${N} * ${e}²) = ${n}`;
-} 
+function fillSlovinExample() { 
+    document.getElementById("popN").value=500; 
+    document.getElementById("popE").value=0.05; 
+    calculateSlovin()
 }
-
 function calculateRaosoft() {
     const N = parseFloat(document.getElementById("rPop").value);
     const e = parseFloat(document.getElementById("rError").value);
